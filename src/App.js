@@ -47,7 +47,7 @@ export default function App() {
             <div className="col-9">
               <table className="table table-striped table-light table-hover table-borderless ">
                 <thead>
-                  <th> Name of the Coin </th> <th> USD Price</th>{' '}
+                  <th> Name of the Coin </th> <th> Unit Price per USD</th>{' '}
                   <th> Monthly Price change (%) </th>{' '}
                   <th> Annual Price change (%) </th>
                 </thead>
