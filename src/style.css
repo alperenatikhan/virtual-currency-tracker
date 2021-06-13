@@ -3,10 +3,26 @@ p {
   font-family: Lato;
 }
 
-tr{
-  text-align: left
+table {
+  font-size: 1rem;
 }
 
-td{
-  margin:10rem;
+tr {
+  text-align: left;
+}
+
+th {
+  font-size: 0.8rem;
+}
+
+td {
+  text-transform: uppercase;
+  width: 20vw;
+  padding: 5%;
+  margin: 2%;
+}
+
+.spark {
+  height: 1.5rem;
+  width: 90%;
 }
