@@ -6,18 +6,24 @@ import Pricerow from './Pricerow.js';
 export default function App() {
   return (
     <div>
+      <div className="container-fluid">
+        <nav className="navbar navbar-primary bg-dark">
+          <div class="container-fluid">
+            <a className="navbar-brand">Virtual-Currency-Tracker</a>
 
-    <div>
-     <nav className="navbar navbar-primary bg-dark">
-  <div class="container-fluid">
-    <a className="navbar-brand">Virtual-Currency-Tracker</a>
-   
-    <form class="d-flex">
-      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button className="btn btn-primary" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+            <form class="d-flex">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-primary" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </nav>
       </div>
 
       <div style={{ width: '90vw', margin: 'auto' }}>
@@ -28,23 +34,33 @@ export default function App() {
           <option value="monero">Monero</option>
           <option value="pln">PLN</option>
         </select>
-          <div className="container-fluid">
-<div className="row" style={{"display":"flex", "flex-direction":"row", "justify-content":"center", "align-items": "center"}}>
-<div className="col-9">
-          <table className="table table-striped table-light table-hover table-borderless ">
-          <thead> 
-          <th> Name of the Coin </th> <th> USD Price</th> <th> Monthly Price change (%) </th> <th> Annual Price change (%) </th> 
-          </thead>
-          <tbody>
-            <Pricerow name="dogecoin" />
-            <Pricerow name="bitcoin" />
-            <Pricerow name="ethereum" />
-            <Pricerow name="ripple" />
-            <Pricerow name="monero" />
-            </tbody>
-       </table>
-       </div>
-        </div>
+        <div className="container-fluid">
+          <div
+            className="row"
+            style={{
+              display: 'flex',
+              'flex-direction': 'row',
+              'justify-content': 'center',
+              'align-items': 'center'
+            }}
+          >
+            <div className="col-9">
+              <table className="table table-striped table-light table-hover table-borderless ">
+                <thead>
+                  <th> Name of the Coin </th> <th> USD Price</th>{' '}
+                  <th> Monthly Price change (%) </th>{' '}
+                  <th> Annual Price change (%) </th>
+                </thead>
+                <tbody>
+                  <Pricerow name="dogecoin" />
+                  <Pricerow name="bitcoin" />
+                  <Pricerow name="ethereum" />
+                  <Pricerow name="ripple" />
+                  <Pricerow name="monero" />
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

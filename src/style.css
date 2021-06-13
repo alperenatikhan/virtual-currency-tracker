@@ -9,6 +9,7 @@ table {
 
 tr {
   text-align: left;
+  font-size: 0.8rem;
 }
 
 th {
@@ -22,7 +23,12 @@ td {
   margin: 2%;
 }
 
+td:nth-child(2n) {
+  font-weight: 600;
+}
+
+
 .spark {
   height: 1.5rem;
-  width: 90%;
+  width: 80%;
 }
