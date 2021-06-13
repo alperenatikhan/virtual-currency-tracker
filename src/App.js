@@ -45,7 +45,7 @@ export default function App() {
             }}
           >
             <div className="col-9">
-              <table className="table table-striped table-light table-hover table-borderless ">
+              <table className="table table-striped table-light table-hover table-borderless">
                 <thead>
                   <th> Name of the Coin </th> <th> Unit Price per USD</th>{' '}
                   <th> Monthly Price change (%) </th>{' '}
@@ -57,6 +57,7 @@ export default function App() {
                   <Pricerow name="ethereum" />
                   <Pricerow name="ripple" />
                   <Pricerow name="monero" />
+                  <Pricerow name="cardano" />
                 </tbody>
               </table>
             </div>

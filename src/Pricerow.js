@@ -6,6 +6,7 @@ export default function Pricerow(props) {
   let [annualChange, setAnnualChange] = useState('loading');
   let [base, setBase] = useState(['bitcoin']);
   let [sparkline, setSparkline] = useState('');
+  let [showInfo, setShowInfo] = useState(false);
 
   useEffect(() => {
     fetch(`https://api.coingecko.com/api/v3/coins/${props.name}?sparkline=true`)
@@ -34,8 +35,30 @@ export default function Pricerow(props) {
   let generateGraph = item =>
     `https://quickchart.io/chart?bkg=white&c={type:'sparkline',data:{datasets:[{fill:true,borderColor:'red',data:[${sparkline}]}]}}`;
 
+  let extendScreen = (item) =>{
+if(showInfo){
+    document.getElementById(item).style.height="15rem";
+}
+    
+ }
+ 
+ let shrinkScreen = (item) =>{
+if(showInfo){
+    document.getElementById(item).style.height="5rem";
+}
+   
+ }
+
+
+  
+ 
+
+
+
   return (
-    <tr>
+    
+    <tr id={props.name}>
+   
       {' '}
       <td>
         {' '}
@@ -56,6 +79,12 @@ export default function Pricerow(props) {
       ) : (
         <td style={{ color: 'red' }}> {annualChange} % </td>
       )}
+
+      {showInfo ? extendScreen(props.name) : shrinkScreen(props.name) }
+     
     </tr>
+
+     
+   
   );
 }
