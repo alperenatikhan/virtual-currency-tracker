@@ -39,9 +39,9 @@ export default function App() {
             className="row"
             style={{
               display: 'flex',
-              'flex-direction': 'row',
-              'justify-content': 'center',
-              'align-items': 'center'
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
           >
             <div className="col-9">
