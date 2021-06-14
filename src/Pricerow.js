@@ -36,14 +36,14 @@ export default function Pricerow(props) {
     `https://quickchart.io/chart?bkg=white&c={type:'sparkline',data:{datasets:[{fill:true,borderColor:'red',data:[${sparkline}]}]}}`;
 
   let extendScreen = (item) =>{
-if(showInfo){
+if(showInfo==true){
     document.getElementById(item).style.height="15rem";
 }
     
  }
  
  let shrinkScreen = (item) =>{
-if(showInfo){
+if(showInfo==false){
     document.getElementById(item).style.height="5rem";
 }
    
@@ -57,8 +57,8 @@ if(showInfo){
 
   return (
     
-    <tr id={props.name}>
-   
+  
+    <tr id={props.name} onClick={()=> setShowInfo(!showInfo)} >
       {' '}
       <td>
         {' '}
@@ -80,7 +80,7 @@ if(showInfo){
         <td style={{ color: 'red' }}> {annualChange} % </td>
       )}
 
-      {showInfo ? extendScreen(props.name) : shrinkScreen(props.name) }
+    {showInfo && <div> Alp[</div>}
      
     </tr>
 
