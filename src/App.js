@@ -31,9 +31,9 @@ export default function App() {
               placeholder="Search"
               aria-label="Search"
               id="searcher"
-              onChange={el => handleSearch(el.target.value)}
+              
             />
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-primary" type="submit" onClick={() => handleSearch(document.getElementById("searcher").value)}>
               Search
             </button>
           </div>
