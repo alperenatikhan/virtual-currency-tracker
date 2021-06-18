@@ -16,7 +16,9 @@ export default function Pricerow(props) {
           return res.json();
         } else {
           if (res.status === 404) {
-            return alert(`Oops, there seems to be an error`);
+            return alert(
+              `The currency you typed can not be found in our database`
+            );
           }
           alert('Oops, there seems to be an error!');
           throw new Error('You have an error');
