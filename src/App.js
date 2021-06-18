@@ -5,6 +5,18 @@ import Pricerow from './Pricerow.js';
 
 export default function App() {
   let [searchCurrency, setSearchCurrency] = useState('');
+  let [searchState, setSearchState] = useState(false);
+  let [showSearch, setShowSearch] = useState(false);
+
+  const newSearch = searchCurrency => {
+    return <Pricerow name={searchCurrency} />;
+  };
+
+  const handleSearch = item => {
+    setShowSearch(true);
+    setSearchCurrency(item.toLowerCase());
+    setSearchState(true);
+  };
 
   return (
     <div>
@@ -19,7 +31,7 @@ export default function App() {
               placeholder="Search"
               aria-label="Search"
               id="searcher"
-              onClick={el => setSearchCurrency(el.target.value)}
+              onChange={el => handleSearch(el.target.value)}
             />
             <button className="btn btn-primary" type="submit">
               Search
@@ -54,9 +66,7 @@ export default function App() {
                   <th> Annual Price change (%) </th>
                 </thead>
                 <tbody>
-                  {searchCurrency && (
-                    <Pricerow name={searchCurrency.toLowerCase()} />
-                  )}
+                  {showSearch && newSearch(searchCurrency)}
                   <Pricerow name="dogecoin" />
                   <Pricerow name="bitcoin" />
                   <Pricerow name="ethereum" />

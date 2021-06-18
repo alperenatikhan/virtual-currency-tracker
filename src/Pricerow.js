@@ -30,7 +30,7 @@ export default function Pricerow(props) {
       })
 
       .catch(error => console.log(error));
-  }, []);
+  }, [props.name]);
 
   let generateGraph = item =>
     `https://quickchart.io/chart?bkg=transparent&c={type:'sparkline',data:{datasets:[{fill:true,borderColor:'red',data:[${sparkline}]}]}}`;
