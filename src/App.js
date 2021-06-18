@@ -4,6 +4,8 @@ import axios from 'axios';
 import Pricerow from './Pricerow.js';
 
 export default function App() {
+  let [searchCurrency, setSearchCurrency] = useState('');
+
   return (
     <div>
       <div className="container-fluid">
@@ -11,17 +13,17 @@ export default function App() {
           <div class="container-fluid">
             <a className="navbar-brand">Virtual-Currency-Tracker</a>
 
-            <form class="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-primary" type="submit">
-                Search
-              </button>
-            </form>
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              id="searcher"
+              onClick={el => setSearchCurrency(el.target.value)}
+            />
+            <button className="btn btn-primary" type="submit">
+              Search
+            </button>
           </div>
         </nav>
       </div>
@@ -52,6 +54,9 @@ export default function App() {
                   <th> Annual Price change (%) </th>
                 </thead>
                 <tbody>
+                  {searchCurrency && (
+                    <Pricerow name={searchCurrency.toLowerCase()} />
+                  )}
                   <Pricerow name="dogecoin" />
                   <Pricerow name="bitcoin" />
                   <Pricerow name="ethereum" />
