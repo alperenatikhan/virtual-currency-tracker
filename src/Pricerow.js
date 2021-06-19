@@ -55,7 +55,7 @@ export default function Pricerow(props) {
         {' '}
         <td>
           {' '}
-          <tr>{props.name} </tr>{' '}
+          <tr>{props.name.toUpperCase()} </tr>{' '}
           <tr>
             {' '}
             <img className="spark" src={generateGraph(sparkline)} />{' '}
@@ -79,9 +79,12 @@ export default function Pricerow(props) {
           {' '}
           <td colspan="4">
             {' '}
-            <h4 className="text-center"> Summary of {props.name}</h4>
-            {props.name} is sold from {price.usd} USD or {price.eur} EUR .{' '}
-            Compared to the last year, its price{' '}
+            <h4 className="text-center">
+              {' '}
+              Summary of {props.name.toUpperCase()}
+            </h4>
+            {props.name.toUpperCase()} is sold from {price.usd} USD or{' '}
+            {price.eur} EUR . Compared to the last year, its price{' '}
             {annualChange > 0 ? 'increased' : 'decreased'} by {annualChange} %.{' '}
             .This means in one year it {annualChange > 0 ? 'gained' : 'lost'}{' '}
             value by {Math.floor(annualChange / 100)} times.

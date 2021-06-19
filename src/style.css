@@ -34,3 +34,7 @@ td:nth-child(2n) {
   height: 1.5rem;
   width: 80%;
 }
+
+.info-col>td{
+  text-transform: initial;
+}
