@@ -10,7 +10,7 @@ export default function App() {
   let [base, setBase] = useState('');
 
   const newSearch = searchCurrency => {
-    return <Pricerow name={searchCurrency} />;
+    return <Pricerow name={searchCurrency} interval={base} />;
   };
 
   const handleSearch = item => {
@@ -89,7 +89,7 @@ export default function App() {
                     'uniswap',
                     'tether'
                   ].map(item => (
-                    <Pricerow name={item} interval= {base} />
+                    <Pricerow name={item} interval={base} />
                   ))}
                 </tbody>
               </table>
