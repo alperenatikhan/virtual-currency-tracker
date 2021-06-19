@@ -57,7 +57,7 @@ export default function Pricerow(props) {
         {' '}
         <td>
           {' '}
-          <img src={icon} />{' '}
+          <img className="icon" src={icon} />{' '}
         </td>
         <td>
           {' '}
@@ -97,7 +97,7 @@ export default function Pricerow(props) {
               {annualChange > 0 ? 'gained' : 'lost'} value by{' '}
               {Math.floor(annualChange / 100)} times.
               <br />
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: "1rem" }}>
                 <table
                   className="table table-striped table-condensed table-hover"
                   style={{ width: '90%' }}
