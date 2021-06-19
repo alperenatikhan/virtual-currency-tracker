@@ -7,6 +7,7 @@ export default function App() {
   let [searchCurrency, setSearchCurrency] = useState('');
   let [searchState, setSearchState] = useState(false);
   let [showSearch, setShowSearch] = useState(false);
+  let [base, setBase] = useState('');
 
   const newSearch = searchCurrency => {
     return <Pricerow name={searchCurrency} />;
@@ -31,9 +32,14 @@ export default function App() {
               placeholder="Search"
               aria-label="Search"
               id="searcher"
-              
             />
-            <button className="btn btn-primary" type="submit" onClick={() => handleSearch(document.getElementById("searcher").value)}>
+            <button
+              className="btn btn-primary"
+              type="submit"
+              onClick={() =>
+                handleSearch(document.getElementById('searcher').value)
+              }
+            >
               Search
             </button>
           </div>
@@ -42,13 +48,14 @@ export default function App() {
 
       <div style={{ width: '90vw', margin: 'auto' }}>
         <select name="" id="base" onChange={el => setBase(el.target.value)}>
-          <option value="bitcoin">Bitcoin</option>
-          <option value="ripple">Ripple</option>
-          <option value="ethereum">Ethereum</option>
-          <option value="monero">Monero</option>
-          <option value="pln">PLN</option>
+          <option value="">Refresh Every</option>
+          <option value="30000"> 30 seconds</option>
+          <option value="10000">10 seconds</option>
+          <option value="5000">5 seconds</option>
+          <option value="1000">1 second</option>
         </select>
         <div className="container-fluid">
+          {base}
           <div
             className="row"
             style={{
@@ -61,18 +68,29 @@ export default function App() {
             <div className="col-9">
               <table className="table table-striped table-light table-hover table-borderless">
                 <thead>
+                  <th> Icon </th>
                   <th> Name of the Coin </th> <th> Unit Price per USD</th>{' '}
                   <th> Monthly Price change (%) </th>{' '}
                   <th> Annual Price change (%) </th>
                 </thead>
                 <tbody>
                   {showSearch && newSearch(searchCurrency)}
-                  <Pricerow name="dogecoin" />
-                  <Pricerow name="bitcoin" />
-                  <Pricerow name="ethereum" />
-                  <Pricerow name="ripple" />
-                  <Pricerow name="monero" />
-                  <Pricerow name="cardano" />
+
+                  {[
+                    'dogecoin',
+                    'bitcoin',
+                    'ethereum',
+                    'litecoin',
+                    'ripple',
+                    'monero',
+                    'cardano',
+                    'stellar',
+                    'chainlink',
+                    'uniswap',
+                    'tether'
+                  ].map(item => (
+                    <Pricerow name={item} />
+                  ))}
                 </tbody>
               </table>
             </div>

@@ -7,6 +7,7 @@ export default function Pricerow(props) {
   let [base, setBase] = useState(['bitcoin']);
   let [sparkline, setSparkline] = useState('');
   let [showInfo, setShowInfo] = useState(false);
+  let [icon, setIcon] = useState('');
 
   useEffect(() => {
     fetch(`https://api.coingecko.com/api/v3/coins/${props.name}?sparkline=true`)
@@ -29,6 +30,7 @@ export default function Pricerow(props) {
         setMonthlyChange(object.market_data.price_change_percentage_30d);
         setAnnualChange(object.market_data.price_change_percentage_1y);
         setSparkline(object.market_data.sparkline_7d.price);
+        setIcon(object.image.small);
       })
 
       .catch(error => console.log(error));
@@ -55,6 +57,10 @@ export default function Pricerow(props) {
         {' '}
         <td>
           {' '}
+          <img src={icon} />{' '}
+        </td>
+        <td>
+          {' '}
           <tr>{props.name.toUpperCase()} </tr>{' '}
           <tr>
             {' '}
@@ -77,19 +83,56 @@ export default function Pricerow(props) {
       {showInfo && (
         <tr className="info-col">
           {' '}
-          <td colspan="4">
+          <td colspan="5">
             {' '}
-            <h4 className="text-center">
-              {' '}
-              Summary of {props.name.toUpperCase()}
-            </h4>
-            {props.name.toUpperCase()} is sold from {price.usd} USD or{' '}
-            {price.eur} EUR . Compared to the last year, its price{' '}
-            {annualChange > 0 ? 'increased' : 'decreased'} by {annualChange} %.{' '}
-            .This means in one year it {annualChange > 0 ? 'gained' : 'lost'}{' '}
-            value by {Math.floor(annualChange / 100)} times.
-            <br />
-            <img src={generateGraph(sparkline)} style={{ width: '80%' }} />
+            <div style={{ padding: '5%' }}>
+              <h4 className="text-center">
+                {' '}
+                Summary of {props.name.toUpperCase()}
+              </h4>
+              {props.name.toUpperCase()} is sold from {price.usd} USD or{' '}
+              {price.eur} EUR . Compared to the last year, its price{' '}
+              {annualChange > 0 ? 'increased' : 'decreased'} by {annualChange}{' '}
+              %. .This means in one year it{' '}
+              {annualChange > 0 ? 'gained' : 'lost'} value by{' '}
+              {Math.floor(annualChange / 100)} times.
+              <br />
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <table
+                  className="table table-striped table-condensed table-hover"
+                  style={{ width: '90%' }}
+                >
+                  <tbody>
+                    <tr>
+                      <td>EUR price</td>
+                      <td>{price.eur} EUR</td>
+                    </tr>
+                    <tr>
+                      <td>USD price</td>
+                      <td> {price.usd} USD</td>
+                    </tr>
+                    <tr>
+                      <td>GBP price</td>
+                      <td>{price.gbp} GBP</td>
+                    </tr>
+
+                    <tr>
+                      <td>AUD price</td>
+                      <td>{price.aud} AUD</td>
+                    </tr>
+
+                    <tr>
+                      <td>CAD price</td>
+                      <td>{price.cad} CAD</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <img
+                src={generateGraph(sparkline)}
+                style={{ width: '100%', height: '9rem' }}
+              />
+            </div>
           </td>
         </tr>
       )}
