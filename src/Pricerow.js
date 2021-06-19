@@ -9,7 +9,7 @@ export default function Pricerow(props) {
   let [showInfo, setShowInfo] = useState(false);
   let [icon, setIcon] = useState('');
 
-  useEffect(() => {
+  const fetchApi = () => {
     fetch(`https://api.coingecko.com/api/v3/coins/${props.name}?sparkline=true`)
       .then(res => {
         if (res.ok) {
@@ -34,6 +34,10 @@ export default function Pricerow(props) {
       })
 
       .catch(error => console.log(error));
+  };
+
+  useEffect(() => {
+    setInterval(fetchApi(), props.interval);
   }, [props.name]);
 
   let generateGraph = item =>
@@ -97,7 +101,13 @@ export default function Pricerow(props) {
               {annualChange > 0 ? 'gained' : 'lost'} value by{' '}
               {Math.floor(annualChange / 100)} times.
               <br />
-              <div style={{ display: 'flex', justifyContent: 'center', marginTop: "1rem" }}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '1rem'
+                }}
+              >
                 <table
                   className="table table-striped table-condensed table-hover"
                   style={{ width: '90%' }}

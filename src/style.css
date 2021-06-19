@@ -3,7 +3,7 @@ p {
   font-family: Lato;
 }
 
-p{
+p {
   max-width: 50ch;
   text-align: justify;
   text-justify: inter-word;
@@ -25,7 +25,7 @@ th {
 
 td {
   width: 20vw;
-  padding: 5%;
+  padding: 2%;
   margin: 2%;
 }
 

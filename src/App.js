@@ -89,7 +89,7 @@ export default function App() {
                     'uniswap',
                     'tether'
                   ].map(item => (
-                    <Pricerow name={item} />
+                    <Pricerow name={item} interval= {base} />
                   ))}
                 </tbody>
               </table>
