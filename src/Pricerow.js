@@ -93,7 +93,7 @@ export default function Pricerow(props) {
               {props.name.toUpperCase()} is sold from {price.usd} USD or{' '}
               {price.eur} EUR . Compared to the last year, its price{' '}
               {annualChange > 0 ? 'increased' : 'decreased'} by {annualChange}{' '}
-              %. .This means in one year it{' '}
+              %. This means in one year it{' '}
               {annualChange > 0 ? 'gained' : 'lost'} value by{' '}
               {Math.floor(annualChange / 100)} times.
               <br />
