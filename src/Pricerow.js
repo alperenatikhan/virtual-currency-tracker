@@ -37,8 +37,11 @@ export default function Pricerow(props) {
   };
 
   useEffect(() => {
-    setInterval(fetchApi(), props.interval);
-  }, [props.name, props.interval]);
+    const interval = setInterval(() => {
+      fetchApi();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [props.name]);
 
   let generateGraph = item =>
     `https://quickchart.io/chart?bkg=transparent&c={type:'sparkline',data:{datasets:[{fill:true,borderColor:'red',data:[${sparkline}]}]}}`;

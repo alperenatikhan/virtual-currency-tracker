@@ -7,7 +7,7 @@ export default function App() {
   let [searchCurrency, setSearchCurrency] = useState('');
   let [searchState, setSearchState] = useState(false);
   let [showSearch, setShowSearch] = useState(false);
-  let [base, setBase] = useState('');
+  let [base, setBase] = useState('300000');
 
   const newSearch = searchCurrency => {
     return <Pricerow name={searchCurrency} interval={base} />;
@@ -48,11 +48,10 @@ export default function App() {
 
       <div style={{ width: '90vw', margin: 'auto' }}>
         <select name="" id="base" onChange={el => setBase(el.target.value)}>
-          <option value="">Refresh Every</option>
+          <option value="30000">Refresh Every</option>
+          <option value="120000"> 2 minutes</option>
+          <option value="60000"> 1 minute</option>
           <option value="30000"> 30 seconds</option>
-          <option value="10000">10 seconds</option>
-          <option value="5000">5 seconds</option>
-          <option value="1000">1 second</option>
         </select>
         <div className="container-fluid">
           {base}
