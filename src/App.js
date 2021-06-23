@@ -8,7 +8,7 @@ export default function App() {
   let [searchCurrency, setSearchCurrency] = useState('');
   let [searchState, setSearchState] = useState(false);
   let [showSearch, setShowSearch] = useState(false);
-  let [base, setBase] = useState('300000');
+  let [base, setBase] = useState('3000000');
 
   const newSearch = searchCurrency => {
     return <Pricerow name={searchCurrency} interval={base} />;
