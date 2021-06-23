@@ -3,12 +3,11 @@ import './style.css';
 import axios from 'axios';
 import Pricerow from './Pricerow.js';
 
-
 export default function App() {
   let [searchCurrency, setSearchCurrency] = useState('');
   let [searchState, setSearchState] = useState(false);
   let [showSearch, setShowSearch] = useState(false);
-  let [base, setBase] = useState('3000000');
+  let [base, setBase] = useState('10000');
 
   const newSearch = searchCurrency => {
     return <Pricerow name={searchCurrency} interval={base} />;
@@ -43,17 +42,19 @@ export default function App() {
             >
               Search
             </button>
-            
           </div>
         </nav>
       </div>
 
       <div style={{ width: '90vw', margin: 'auto' }}>
         <select name="" id="base" onChange={el => setBase(el.target.value)}>
-          <option value="30000">Refresh Every</option>
+          <option value="10000">Refresh Every</option>
           <option value="120000"> 2 minutes</option>
           <option value="60000"> 1 minute</option>
           <option value="30000"> 30 seconds</option>
+          <option value="15000"> 15 seconds</option>
+          <option value="10000"> 10 seconds</option>
+          <option value="5000"> 5 seconds</option>
         </select>
         <div className="container-fluid">
           {base}
