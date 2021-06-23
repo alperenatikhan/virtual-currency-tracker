@@ -81,17 +81,7 @@ export default function Pricerow(props) {
   let generateGraph = item =>
     `https://quickchart.io/chart?bkg=transparent&c={type:'sparkline',data:{datasets:[{fill:true,borderColor:'red',data:[${sparkline}]}]}}`;
 
-  let extendScreen = item => {
-    if (showInfo == true) {
-      document.getElementById(item).style.height = '15rem';
-    }
-  };
-
-  let shrinkScreen = item => {
-    if (showInfo == false) {
-      document.getElementById(item).style.height = '5rem';
-    }
-  };
+ 
 
   return (
     <>

@@ -57,7 +57,7 @@ export default function App() {
           <option value="5000"> 5 seconds</option>
         </select>
         <div className="container-fluid">
-          {base}
+         
           <div
             className="row"
             style={{
