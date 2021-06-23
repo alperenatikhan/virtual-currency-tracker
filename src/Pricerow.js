@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import FadeIn from 'react-fade-in';
 
 export default function Pricerow(props) {
   let [price, setPrice] = useState('LOADING');
@@ -60,6 +61,7 @@ export default function Pricerow(props) {
 
   return (
     <>
+   
       <tr id={props.name} onClick={() => setShowInfo(!showInfo)}>
         {' '}
         <td>
@@ -74,17 +76,18 @@ export default function Pricerow(props) {
             <img className="spark" src={generateGraph(sparkline)} />{' '}
           </tr>{' '}
         </td>{' '}
-        <td> {price.usd} USD</td>{' '}
+        <td> <FadeIn transitionDuration="300">{price.usd}</FadeIn> USD</td>{' '}
         {monthlyChange >= 0 ? (
-          <td style={{ color: 'green' }}> {monthlyChange} </td>
+          <td style={{ color: 'green' }}> <FadeIn transitionDuration="300"> {monthlyChange} </FadeIn> </td>
         ) : (
-          <td style={{ color: 'red' }}> {monthlyChange} </td>
+          <td style={{ color: 'red' }}> <FadeIn transitionDuration="300">  {monthlyChange} </FadeIn> </td>
         )}
         {annualChange >= 0 ? (
-          <td style={{ color: 'green' }}> {annualChange} </td>
+          <td style={{ color: 'green' }}> <FadeIn transitionDuration="300">  {annualChange} </FadeIn> </td>
         ) : (
-          <td style={{ color: 'red' }}> {annualChange} % </td>
+          <td style={{ color: 'red' }}> <FadeIn transitionDuration="300">  {annualChange} % </FadeIn> </td>
         )}
+       
       </tr>
 
       {showInfo && (
@@ -148,6 +151,7 @@ export default function Pricerow(props) {
             </div>
           </td>
         </tr>
+      
       )}
     </>
   );
