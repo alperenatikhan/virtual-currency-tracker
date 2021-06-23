@@ -41,7 +41,7 @@ export default function Pricerow(props) {
   useEffect(() => {
     const interval = setInterval(() => {
       fetchApi();
-    }, props.interval);
+    }, 10000);
     return () => clearInterval(interval);
   }, [props.name]);
 
