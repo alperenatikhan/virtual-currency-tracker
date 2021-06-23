@@ -3,6 +3,7 @@ import './style.css';
 import axios from 'axios';
 import Pricerow from './Pricerow.js';
 
+
 export default function App() {
   let [searchCurrency, setSearchCurrency] = useState('');
   let [searchState, setSearchState] = useState(false);
@@ -42,6 +43,7 @@ export default function App() {
             >
               Search
             </button>
+            
           </div>
         </nav>
       </div>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import FadeIn from 'react-fade-in';
+import { Ellipsis } from 'react-awesome-spinners';
 
 export default function Pricerow(props) {
-  let [price, setPrice] = useState('LOADING');
-  let [monthlyChange, setMonthlyChange] = useState('LOADING');
-  let [annualChange, setAnnualChange] = useState('loading');
+  let [price, setPrice] = useState(false);
+  let [monthlyChange, setMonthlyChange] = useState(false);
+  let [annualChange, setAnnualChange] = useState(false);
   let [base, setBase] = useState(['bitcoin']);
   let [sparkline, setSparkline] = useState('');
   let [showInfo, setShowInfo] = useState(false);
@@ -44,6 +45,39 @@ export default function Pricerow(props) {
     return () => clearInterval(interval);
   }, [props.name]);
 
+  let ProperFormat = () => {
+    return (
+      <>
+        <td>
+          {' '}
+          <FadeIn transitionDuration="300">{price.usd}</FadeIn> USD
+        </td>{' '}
+        {monthlyChange >= 0 ? (
+          <td style={{ color: 'green' }}>
+            {' '}
+            <FadeIn transitionDuration="300"> {monthlyChange} </FadeIn>{' '}
+          </td>
+        ) : (
+          <td style={{ color: 'red' }}>
+            {' '}
+            <FadeIn transitionDuration="300"> {monthlyChange} </FadeIn>{' '}
+          </td>
+        )}
+        {annualChange >= 0 ? (
+          <td style={{ color: 'green' }}>
+            {' '}
+            <FadeIn transitionDuration="300"> {annualChange} </FadeIn>{' '}
+          </td>
+        ) : (
+          <td style={{ color: 'red' }}>
+            {' '}
+            <FadeIn transitionDuration="300"> {annualChange} % </FadeIn>{' '}
+          </td>
+        )}
+      </>
+    );
+  };
+
   let generateGraph = item =>
     `https://quickchart.io/chart?bkg=transparent&c={type:'sparkline',data:{datasets:[{fill:true,borderColor:'red',data:[${sparkline}]}]}}`;
 
@@ -61,7 +95,6 @@ export default function Pricerow(props) {
 
   return (
     <>
-   
       <tr id={props.name} onClick={() => setShowInfo(!showInfo)}>
         {' '}
         <td>
@@ -76,18 +109,21 @@ export default function Pricerow(props) {
             <img className="spark" src={generateGraph(sparkline)} />{' '}
           </tr>{' '}
         </td>{' '}
-        <td> <FadeIn transitionDuration="300">{price.usd}</FadeIn> USD</td>{' '}
-        {monthlyChange >= 0 ? (
-          <td style={{ color: 'green' }}> <FadeIn transitionDuration="300"> {monthlyChange} </FadeIn> </td>
+        {price ? (
+          <ProperFormat />
         ) : (
-          <td style={{ color: 'red' }}> <FadeIn transitionDuration="300">  {monthlyChange} </FadeIn> </td>
+          <>
+            <td>
+              <Ellipsis />{' '}
+            </td>
+            <td>
+              <Ellipsis />{' '}
+            </td>
+            <td>
+              <Ellipsis />{' '}
+            </td>
+          </>
         )}
-        {annualChange >= 0 ? (
-          <td style={{ color: 'green' }}> <FadeIn transitionDuration="300">  {annualChange} </FadeIn> </td>
-        ) : (
-          <td style={{ color: 'red' }}> <FadeIn transitionDuration="300">  {annualChange} % </FadeIn> </td>
-        )}
-       
       </tr>
 
       {showInfo && (
@@ -151,7 +187,6 @@ export default function Pricerow(props) {
             </div>
           </td>
         </tr>
-      
       )}
     </>
   );
